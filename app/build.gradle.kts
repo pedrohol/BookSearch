@@ -41,6 +41,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -52,4 +53,17 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Retrofit
+    implementation("com.google.code.gson:gson:2.8.6")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+    //Glide
+    implementation("com.github.bumptech´.glide:glide:5.0.5")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+
+    //ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
 }
