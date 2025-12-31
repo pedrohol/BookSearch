@@ -16,6 +16,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:id="@+id/item_bookTitle"
         android:textSize="12sp"
         android:text="BookTittleTextporque sim"
         android:layout_width="90dp"

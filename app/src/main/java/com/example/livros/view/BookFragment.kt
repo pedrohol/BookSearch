@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.livros.databinding.FragmentBookBinding
+import com.example.livros.repository.BooksRepository
 
 class BookFragment: Fragment() {
 
