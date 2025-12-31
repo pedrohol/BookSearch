@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/menu_books"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:id="@+id/menu_books"
+        android:name="com.example.livros.view.SearchBookFragment"
+        android:label="SearchBookFragment"
+        tools:layout="@layout/fragment_search_books">
+        <action
+            android:id="@+id/action_menu_books_to_bookFragment"
+            app:destination="@id/bookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_favorites"
+        android:name="com.example.livros.view.FavoritesFragment"
+        android:label="FavoritesFragment"
+        tools:layout="@layout/fragment_favorites"/>
+    <fragment
+        android:id="@+id/bookFragment"
+        android:name="com.example.livros.view.BookFragment"
+        android:label="BookFragment"
+        tools:layout="@layout/fragment_book"/>
+</navigation>
