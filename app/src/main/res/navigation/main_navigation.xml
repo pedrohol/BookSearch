@@ -23,5 +23,9 @@
         android:id="@+id/bookFragment"
         android:name="com.example.livros.view.BookFragment"
         android:label="BookFragment"
-        tools:layout="@layout/fragment_book"/>
+        tools:layout="@layout/fragment_book">
+        <action
+            android:id="@+id/action_bookFragment_to_menu_books"
+            app:destination="@id/menu_books" />
+    </fragment>
 </navigation>

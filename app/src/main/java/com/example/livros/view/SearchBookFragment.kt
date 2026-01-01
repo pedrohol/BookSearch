@@ -16,6 +16,7 @@ import com.example.livros.databinding.ItemBookCoverBinding
 import com.example.livros.model.Authors
 import com.example.livros.model.Books
 import java.util.zip.Inflater
+import androidx.navigation.findNavController
 
 class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
@@ -30,7 +31,7 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
         binding.searchRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 
         binding.searchRecyclerView.adapter = SearchBookAdapter{
-
+            view.findNavController().navigate(R.id.bookFragment)
         }
 
     }
