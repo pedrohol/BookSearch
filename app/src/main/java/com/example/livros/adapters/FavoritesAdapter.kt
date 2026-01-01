@@ -34,7 +34,7 @@ class FavoritesAdapter: RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolde
     inner class FavoritesViewHolder(val binding: ItemFavoriteBookBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(favorites: Books) {
             binding.itemFavoriteTitle.text = favorites.title
-            binding.itemFavoriteAuthorName.text = favorites.authors.name
+            binding.itemFavoriteAuthorName.text = favorites.authors[0].name
             binding.itemFavoriteBookCover.setImageResource(favorites.image)
         }
     }
