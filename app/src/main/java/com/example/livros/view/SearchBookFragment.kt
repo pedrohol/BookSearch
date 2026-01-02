@@ -17,6 +17,9 @@ import com.example.livros.model.Authors
 import com.example.livros.model.Books
 import java.util.zip.Inflater
 import androidx.navigation.findNavController
+import com.example.livros.retrofit.BooksService
+import com.example.livros.retrofit.RequestService
+import com.example.livros.retrofit.RetrofitInstance
 
 class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
@@ -27,6 +30,7 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
         binding = FragmentSearchBooksBinding.bind(view)
 
+        val retrofitService = RetrofitInstance.getRetrofitInstance().create(BooksService::class.java)
 
         binding.searchRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 
