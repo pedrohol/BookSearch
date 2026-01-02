@@ -9,7 +9,7 @@ import com.example.livros.repository.BooksRepository
 
 class FavoritesAdapter: RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
-    private val favoriteList = BooksRepository().booksList
+    private val favoriteList = listOf<Books>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,7 +35,7 @@ class FavoritesAdapter: RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolde
         fun bind(favorites: Books) {
             binding.itemFavoriteTitle.text = favorites.title
             binding.itemFavoriteAuthorName.text = favorites.authors[0].name
-            binding.itemFavoriteBookCover.setImageResource(favorites.image)
+
         }
     }
 }

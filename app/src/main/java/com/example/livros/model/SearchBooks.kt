@@ -1,5 +1,8 @@
 package com.example.livros.model
 
 data class SearchBooks(
-    val books: List<Books>
+    val available: Long,
+    val number: Int,
+    val offset: Int,
+    val books: List<List<Books>>,
 )

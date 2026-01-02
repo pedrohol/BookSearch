@@ -3,17 +3,34 @@ package com.example.livros.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.livros.R
 import com.example.livros.databinding.FragmentSearchBooksBinding
 import com.example.livros.databinding.ItemBookCoverBinding
 import com.example.livros.model.Authors
 import com.example.livros.model.Books
+import com.example.livros.model.SearchBooks
 import com.example.livros.repository.BooksRepository
 import com.example.livros.view.BookFragment
 
 class SearchBookAdapter(private val onClick: (Long) -> Unit) : RecyclerView.Adapter<SearchBookAdapter.SearchViewHolder>() {
 
-    private val listBook = BooksRepository().booksList
+    private var listBook = mutableListOf<Books>()
+
+    fun setBooksList(books: List<List<Books>>) {
+
+        val finalList = mutableListOf<Books>()
+
+        for (i in books) {
+            for (j in i) {
+                finalList.add(j)
+            }
+        }
+
+        this.listBook = finalList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -39,7 +56,15 @@ class SearchBookAdapter(private val onClick: (Long) -> Unit) : RecyclerView.Adap
         fun bind(book: Books) {
 
             binding.itemBookTitle.text = book.title
-            binding.itemBookCover.setImageResource(book.image)
+
+            val  requestOptions = RequestOptions()
+                .placeholder(R.drawable.placeholder_book)
+                .error(R.drawable.placeholder_book)
+
+            Glide.with(itemView.context)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(book.image)
+                .into(binding.itemBookCover)
 
             binding.itemBookCover.setOnClickListener {
                 onClick.invoke(book.id)
