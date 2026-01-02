@@ -43,7 +43,7 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
         binding = FragmentSearchBooksBinding.bind(view)
 
-        binding.searchRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.searchRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         binding.searchRecyclerView.adapter = adapter
 

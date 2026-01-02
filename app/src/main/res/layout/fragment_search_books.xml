@@ -34,10 +34,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/item_book_cover"
-        app:spanCount="4"
+        app:spanCount="2"
         tools:itemCount="20"
         android:paddingHorizontal="10dp"
-        android:paddingTop="10dp"
         />
 
     <TextView
