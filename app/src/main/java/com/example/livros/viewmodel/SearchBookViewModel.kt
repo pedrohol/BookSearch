@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.livros.model.Books
 import com.example.livros.model.SearchBooks
+import com.example.livros.repository.BooksRepository
 
-import com.example.livros.repository.SearchBookRepository
 import com.example.livros.retrofit.BooksService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SearchBookViewModel(private val repository: SearchBookRepository) : ViewModel() {
+class SearchBookViewModel(private val repository: BooksRepository) : ViewModel() {
 
     val booksList = MutableLiveData<SearchBooks>()
     val errorMessage = MutableLiveData<String>()

@@ -57,6 +57,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+
     //Retrofit
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.squareup.retrofit2:retrofit:3.0.0")

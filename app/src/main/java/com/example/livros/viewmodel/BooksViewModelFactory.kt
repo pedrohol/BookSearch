@@ -2,9 +2,9 @@ package com.example.livros.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.livros.repository.SearchBookRepository
+import com.example.livros.repository.BooksRepository
 
-class SearchBookViewModelFactory(val repository: SearchBookRepository): ViewModelProvider.Factory {
+class BooksViewModelFactory(val repository: BooksRepository): ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
        return if(modelClass.isAssignableFrom(SearchBookViewModel::class.java)) {
