@@ -15,7 +15,7 @@ import androidx.navigation.findNavController
 import com.example.livros.repository.BooksRepository
 import com.example.livros.retrofit.BooksService
 import com.example.livros.viewmodel.SearchBookViewModel
-import com.example.livros.viewmodel.BooksViewModelFactory
+import com.example.livros.viewmodel.Factory.BooksViewModelFactory
 
 class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
@@ -23,9 +23,9 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
     private val retrofitService = BooksService.getInstance()
 
-    private val adapter = SearchBookAdapter {
-        view?.findNavController()?.navigate(R.id.bookFragment)
-
+    private val adapter = SearchBookAdapter { book ->
+        val bookFragment = SearchBookFragmentDirections.actionMenuBooksToBookFragment(book.id)
+        view?.findNavController()?.navigate(bookFragment)
     }
 
     lateinit var viewModel: SearchBookViewModel
@@ -54,7 +54,7 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
         viewModel.errorMessage.observe(this, Observer { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-        Log.i("Erro", message)
+            Log.i("Erro", message)
         })
 
     }

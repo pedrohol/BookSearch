@@ -11,6 +11,9 @@ data class BookInformation (
     @SerializedName("title")
     val title: String,
 
+    @SerializedName("subtitle")
+    val subtitle: String,
+
     @SerializedName("image")
     val image: String,
 

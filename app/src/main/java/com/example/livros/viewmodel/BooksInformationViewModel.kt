@@ -13,7 +13,7 @@ class BooksInformationViewModel(val repository: BooksRepository) : ViewModel() {
     val bookInformation = MutableLiveData<BookInformation>()
     val errorMessage = MutableLiveData<String>()
 
-    fun getBookInformation(bookId: Long?) {
+    fun getBookInformation(bookId: Long) {
 
         val request = repository.getInformation(bookId)
         request.enqueue(object : Callback<BookInformation> {

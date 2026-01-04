@@ -18,7 +18,7 @@ import com.example.livros.util.Constants
 import com.example.livros.view.BookFragment
 import com.example.livros.view.SearchBookFragment
 
-class SearchBookAdapter(private val onClick: (Long) -> Unit) : RecyclerView.Adapter<SearchBookAdapter.SearchViewHolder>() {
+class SearchBookAdapter(private val onClick: (Books) -> Unit) : RecyclerView.Adapter<SearchBookAdapter.SearchViewHolder>() {
 
     private var listBook = mutableListOf<Books>()
     fun setBooksList(books: List<List<Books>>) {
@@ -70,8 +70,7 @@ class SearchBookAdapter(private val onClick: (Long) -> Unit) : RecyclerView.Adap
                 .into(binding.itemBookCover)
 
             itemView.setOnClickListener {
-
-
+                onClick(book)
             }
 
         }

@@ -27,5 +27,11 @@
         <action
             android:id="@+id/action_bookFragment_to_menu_books"
             app:destination="@id/menu_books" />
+        <argument
+            android:name="bookId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_bookFragment_self"
+            app:destination="@id/bookFragment" />
     </fragment>
 </navigation>
