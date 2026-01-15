@@ -3,13 +3,22 @@ package com.example.livros.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.livros.databinding.ItemFavoriteBookBinding
 import com.example.livros.model.Books
 import com.example.livros.repository.BooksRepository
+import com.example.livros.room.FavoriteEntity
 
-class FavoritesAdapter: RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
+class FavoritesAdapter(private val onClick: (FavoriteEntity) -> Unit): RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
-    private val favoriteList = listOf<Books>()
+
+    var favoriteList = listOf<FavoriteEntity>()
+
+    fun getFavorites(favorites: List<FavoriteEntity>) {
+        this.favoriteList = favorites
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,9 +41,23 @@ class FavoritesAdapter: RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolde
     }
 
     inner class FavoritesViewHolder(val binding: ItemFavoriteBookBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(favorites: Books) {
+        fun bind(favorites: FavoriteEntity) {
             binding.itemFavoriteTitle.text = favorites.title
-            binding.itemFavoriteAuthorName.text = favorites.authors[0].name
+            binding.itemFavoriteAuthorName.text = favorites.author
+
+            val  requestOptions = RequestOptions()
+                .placeholder(com.example.livros.R.drawable.placeholder_book)
+                .error(com.example.livros.R.drawable.placeholder_book)
+
+            Glide.with(itemView.context)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(favorites.image)
+                .into(binding.itemFavoriteBookCover)
+
+            itemView.setOnLongClickListener {
+                onClick(favorites)
+                true
+            }
 
         }
     }

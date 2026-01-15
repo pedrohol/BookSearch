@@ -12,4 +12,8 @@ class FavoritesRepository(private val favoriteDao: FavoriteDao) {
         favoriteDao.addFavorite(favorite)
     }
 
+    suspend fun deleteFavorite(favorite: FavoriteEntity) {
+        favoriteDao.deleteFavorite(favorite)
+    }
+
 }

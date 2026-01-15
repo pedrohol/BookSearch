@@ -21,4 +21,10 @@ class FavoritesViewModel(private val repository: FavoritesRepository) : ViewMode
         }
     }
 
+    fun removeFavorite (favorite: FavoriteEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFavorite(favorite)
+        }
+    }
+
 }
