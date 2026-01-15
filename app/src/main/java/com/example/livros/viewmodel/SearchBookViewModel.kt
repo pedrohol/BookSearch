@@ -31,5 +31,20 @@ class SearchBookViewModel(private val repository: BooksRepository) : ViewModel()
         })
     }
 
+    fun searchBooks(searchBook: String) {
+
+        val request = repository.searchBooks(searchBook)
+        request.enqueue(object : Callback<SearchBooks>{
+            override fun onResponse(call: Call<SearchBooks?>, response: Response<SearchBooks?>) {
+                booksList.postValue(response.body())
+            }
+
+            override fun onFailure(call: Call<SearchBooks?>, t: Throwable) {
+                errorMessage.postValue(t.message)
+            }
+
+        })
+    }
+
 
 }

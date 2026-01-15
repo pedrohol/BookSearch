@@ -3,6 +3,7 @@ package com.example.livros.view
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,6 +43,21 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
         viewModel = ViewModelProvider(this, BooksViewModelFactory(BooksRepository(retrofitService))).get(
             SearchBookViewModel::class.java
         )
+
+        binding.searchSearchText.setOnEditorActionListener { v, actionId, event ->
+
+            if(actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = binding.searchSearchText.text.toString()
+
+                if (query.isNotEmpty()) {
+                    viewModel.searchBooks(query)
+                }
+                true
+            } else {
+                true
+            }
+
+        }
 
     }
 

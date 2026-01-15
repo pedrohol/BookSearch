@@ -20,6 +20,10 @@ interface BooksService {
     @GET("search-books")
     fun getBooks(@Query("api-key") apiKey: String) : Call<SearchBooks>
 
+    @GET("search-books")
+    fun searchBooks(@Query("api-key") apiKey: String, @Query("query") search: String) : Call<SearchBooks>
+
+
     @GET("{id}")
     fun getBooksInformation(@Path("id") bookId: Long, @Query("api-key") apiKey: String) : Call<BookInformation>
 

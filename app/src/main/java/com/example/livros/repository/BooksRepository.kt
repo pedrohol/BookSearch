@@ -9,6 +9,8 @@ import com.example.livros.util.Constants
 class BooksRepository(private val booksService: BooksService) {
 
     fun getBookList() = booksService.getBooks(Constants.API_KEY)
+
+    fun searchBooks(search: String) = booksService.searchBooks(Constants.API_KEY,search)
     fun getInformation(bookId: Long) = booksService.getBooksInformation(bookId, Constants.API_KEY)
 
     fun getSimilar(bookId: Long) = booksService.getSimilarBooks(bookId, Constants.API_KEY)
