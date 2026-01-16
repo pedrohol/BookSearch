@@ -1,5 +1,5 @@
 # BookSearch
-Projeto feita para aplicar estudos de Retrofit, Room, e MVVM.
+Projeto feito para aplicar estudos de Retrofit, Room, e MVVM.
 
 ## Features
 O aplicativo consiste em uma lista de livros, com opção de pesquisa por toda a API Big Book.
