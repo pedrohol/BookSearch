@@ -13,7 +13,7 @@ O aplicativo consiste em uma lista de livros, com opção de pesquisa por toda a
 
 - Uma lista dos livros que foram favoritados.
 - Os livros são adicionados pelo botão na tela do livro.
-- É possivel remover livros da listra ao pressionar ele na lista de livros.
+- É possivel remover um livro dos favoritos ao pressionar ele na lista.
 
 ## Screenshots
 <img
