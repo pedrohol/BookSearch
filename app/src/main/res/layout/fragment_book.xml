@@ -52,7 +52,7 @@
 
     <TextView
         android:id="@+id/book_title"
-        android:text="BOOK TITLE"
+        tools:text="BOOK TITLE"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -68,7 +68,7 @@
 
     <TextView
         android:id="@+id/book_subtitle"
-        android:text="Book Subtitle"
+        tools:text="Book Subtitle"
         android:textSize="12sp"
         android:textStyle="bold"
         android:layout_width="0dp"
@@ -83,7 +83,7 @@
 
     <TextView
         android:id="@+id/book_author"
-        android:text="Author Name "
+        tools:text="Author Name "
         android:textSize="10sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
 
     <TextView
         android:id="@+id/book_publishDate"
-        android:text="Date "
+        android:text=" "
         android:textSize="10sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
 
     <TextView
         android:id="@+id/book_description"
-        android:text="Book Description"
+        tools:text="Book Description"
         android:textSize="10sp"
         android:layout_width="0dp"
         android:layout_height="0dp"
