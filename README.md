@@ -1,19 +1,10 @@
 # BookSearch
-Projeto feito para aplicar estudos de banco da dados, consumo de API e arquitetura de aplicativos.
+Aplicativo Android desenvolvido para aplicar estudos em persistência de dados local, consumo de APIs REST e arquitetura moderna de software.
 
 ## Features
-O aplicativo consiste em uma lista de livros, com opção de pesquisa por toda a API Big Book.
-
-**Informações**
-
-- Selecionando um livro da lista, você tem acesso as informações do mesmo.
-- Com uma opção para adicionar o livro aos favoritos.
-
-**Favoritos**
-
-- Uma lista dos livros que foram favoritados.
-- Os livros são adicionados pelo botão na tela do livro.
-- É possivel remover um livro dos favoritos ao pressionar ele na lista.
+- Listagem e pesquisa de livros atráves da API Big Book.
+- Visualização de informações completas de cada obra.
+- Sistema de persistência de dados para salvar livros favoritos.
 
 ## Screenshots
 <img
@@ -29,11 +20,12 @@ O aplicativo consiste em uma lista de livros, com opção de pesquisa por toda a
   src="https://i.imgur.com/v4CdzqU.jpeg"
   />
 
-## Tech Stack
+## Tech Stack & Arquitetura
 <p><strong>Linguagem de Programação</strong></p>
 <ul>
-<li><strong>Kotlin</strong>: Desenvolvimento das funcionalidades do app.</li>
-<li><strong>XML</strong>: Para criação de interface.</li>
-<li><strong>Retrofit</strong>: Consumo de API.</li>
-<li><strong>Room</strong>: Criação de database.</li>
-<li><strong>MVVM</strong>: Arquitetura do aplicativo.</li>
+<li><strong>Linguagem</strong>: Kotlin.</li>
+<li><strong>Arquitetura</strong>: MVVM (Model-View-ViewModel).</li>
+<li><strong>Consumo de API</strong>: Retrofit.</li>
+<li><strong>Banco de Dados</strong>: Room Persistence Library (abstração do SQLite).</li>
+<li><strong>UI</strong>: XML com componentes do Material Design.</li>
+<li><strong>Lifecycle</strong>: Activity, Fragments, ViewModel, LiveData.</li>
