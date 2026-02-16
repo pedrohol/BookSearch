@@ -30,25 +30,25 @@ interface BooksService {
     @GET("{id}/similar")
     fun getSimilarBooks(@Path("id") bookId: Long, @Query("api-key") apiKey: String) : Call<BookSimilar>
 
-    companion object {
-
-        private val apiURL = Constants.BASE_URL
-
-        private val booksService: BooksService by lazy {
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(apiURL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            retrofit.create(BooksService::class.java)
-
-        }
-
-        fun getInstance() : BooksService {
-            return booksService
-        }
-
-    }
+//    companion object {
+//
+//        private val apiURL = Constants.BASE_URL
+//
+//        private val booksService: BooksService by lazy {
+//
+//            val retrofit = Retrofit.Builder()
+//                .baseUrl(apiURL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//
+//            retrofit.create(BooksService::class.java)
+//
+//        }
+//
+//        fun getInstance() : BooksService {
+//            return booksService
+//        }
+//
+//    }
 
 }

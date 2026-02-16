@@ -17,19 +17,20 @@ import com.example.livros.repository.BooksRepository
 import com.example.livros.retrofit.BooksService
 import com.example.livros.viewmodel.SearchBookViewModel
 import com.example.livros.viewmodel.Factory.BooksViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
     private lateinit var binding: FragmentSearchBooksBinding
 
-    private val retrofitService = BooksService.getInstance()
+    //private val retrofitService = BooksService.getInstance()
 
     private val adapter = SearchBookAdapter { book ->
         val bookFragment = SearchBookFragmentDirections.actionMenuBooksToBookFragment(book.id)
         view?.findNavController()?.navigate(bookFragment)
     }
 
-    lateinit var viewModel: SearchBookViewModel
+    private val viewModel: SearchBookViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,10 +40,6 @@ class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
         binding.searchRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         binding.searchRecyclerView.adapter = adapter
-
-        viewModel = ViewModelProvider(this, BooksViewModelFactory(BooksRepository(retrofitService))).get(
-            SearchBookViewModel::class.java
-        )
 
         binding.searchSearchText.setOnEditorActionListener { v, actionId, event ->
 

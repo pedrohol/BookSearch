@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.backend.wasm.ir2wasm.bind
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -83,6 +81,9 @@ dependencies {
 
     //SplashScreen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    //Koin
+    implementation("io.insert-koin:koin-android:4.0.0")
 
 
 }

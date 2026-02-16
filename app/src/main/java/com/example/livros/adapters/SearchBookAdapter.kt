@@ -21,13 +21,15 @@ import com.example.livros.view.SearchBookFragment
 class SearchBookAdapter(private val onClick: (Books) -> Unit) : RecyclerView.Adapter<SearchBookAdapter.SearchViewHolder>() {
 
     private var listBook = mutableListOf<Books>()
-    fun setBooksList(books: List<List<Books>>) {
+    fun setBooksList(books: List<List<Books>>?) {
 
         val finalList = mutableListOf<Books>()
 
-        for (i in books) {
-            for (j in i) {
-                finalList.add(j)
+        if (books != null) {
+            for (i in books) {
+                for (j in i) {
+                    finalList.add(j)
+                }
             }
         }
 

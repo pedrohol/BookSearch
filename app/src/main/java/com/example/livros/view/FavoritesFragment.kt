@@ -18,12 +18,13 @@ import com.example.livros.room.FavoriteDao
 import com.example.livros.room.FavoriteDatabase
 import com.example.livros.viewmodel.Factory.FavoritesViewModelFactory
 import com.example.livros.viewmodel.FavoritesViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoritesFragment: Fragment(R.layout.fragment_favorites) {
 
     private lateinit var binding: FragmentFavoritesBinding
 
-    private lateinit var favoriteViewModel: FavoritesViewModel
+    private val favoriteViewModel: FavoritesViewModel by viewModel()
 
     private val adapter = FavoritesAdapter() {
         favoriteViewModel.removeFavorite(it)
@@ -37,7 +38,7 @@ class FavoritesFragment: Fragment(R.layout.fragment_favorites) {
         val dao = database.favoriteDao()
         val repository = FavoritesRepository(dao)
 
-        favoriteViewModel = ViewModelProvider(this, FavoritesViewModelFactory(repository)).get(FavoritesViewModel::class.java)
+//        favoriteViewModel = ViewModelProvider(this, FavoritesViewModelFactory(repository)).get(FavoritesViewModel::class.java)
 
         binding = FragmentFavoritesBinding.bind(view)
 

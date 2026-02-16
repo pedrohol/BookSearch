@@ -26,22 +26,22 @@ import com.example.livros.viewmodel.Factory.BooksInformationViewModelFactory
 import com.example.livros.viewmodel.Factory.BooksSimilarFactory
 import com.example.livros.viewmodel.Factory.FavoritesViewModelFactory
 import com.example.livros.viewmodel.FavoritesViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookFragment: Fragment(R.layout.fragment_book) {
 
     private lateinit var binding: FragmentBookBinding
 
-    private val retrofitService = BooksService.getInstance()
+    //private val retrofitService = BooksService.getInstance()
 
     private val adapter = BookSimilarAdapter { bookSimilar ->
         val action = BookFragmentDirections.actionBookFragmentSelf(bookSimilar.id)
         view?.findNavController()?.navigate(action)
     }
 
-    lateinit var viewModel : BooksInformationViewModel
-    lateinit var favoriteViewModel: FavoritesViewModel
-
-    lateinit var similarViewModel: BooksSimilarViewModel
+    private val viewModel : BooksInformationViewModel by viewModel()
+    private val favoriteViewModel: FavoritesViewModel by viewModel()
+    private val similarViewModel: BooksSimilarViewModel by viewModel()
 
     val args: BookFragmentArgs by navArgs()
 
@@ -55,19 +55,19 @@ class BookFragment: Fragment(R.layout.fragment_book) {
 
         binding.bookRecyclerView.adapter = adapter
 
-        viewModel = ViewModelProvider(this, BooksInformationViewModelFactory(BooksRepository(retrofitService))).get(
-            BooksInformationViewModel::class.java
-        )
+//        viewModel = ViewModelProvider(this, BooksInformationViewModelFactory(BooksRepository(retrofitService))).get(
+//            BooksInformationViewModel::class.java
+//        )
 
-        similarViewModel = ViewModelProvider(this, BooksSimilarFactory(BooksRepository(retrofitService))).get(
-            BooksSimilarViewModel::class.java
-        )
+//        similarViewModel = ViewModelProvider(this, BooksSimilarFactory(BooksRepository(retrofitService))).get(
+//            BooksSimilarViewModel::class.java
+//        )
 
         val database = FavoriteDatabase.getDataBase(requireContext())
         val dao = database.favoriteDao()
         val repository = FavoritesRepository(dao)
 
-        favoriteViewModel = ViewModelProvider(this, FavoritesViewModelFactory(repository)).get(FavoritesViewModel::class.java)
+//        favoriteViewModel = ViewModelProvider(this, FavoritesViewModelFactory(repository)).get(FavoritesViewModel::class.java)
 
         binding.backArrow.setNavigationOnClickListener {
             findNavController().popBackStack()
@@ -80,28 +80,30 @@ class BookFragment: Fragment(R.layout.fragment_book) {
 
         viewModel.bookInformation.observe(this, Observer { book ->
 
-            val title = book.title
-            val author = book.authors[0].name
-            val description = book.description
-            val image = book.image
+            if(book != null) {
+
+                val title = book.title
+                val author = book.authors[0].name
+                val description = book.description
+                val image = book.image
 
 
-            binding.bookTitle.text = title
-            binding.bookAuthor.text = author
-            binding.bookDescription.text = description
+                binding.bookTitle.text = title
+                binding.bookAuthor.text = author
+                binding.bookDescription.text = description
 
-            Glide.with(this)
-                .load(image)
-                .placeholder(R.drawable.placeholder_book)
-                .error(R.drawable.placeholder_book)
-                .into(binding.bookCover)
+                Glide.with(this)
+                    .load(image)
+                    .placeholder(R.drawable.placeholder_book)
+                    .error(R.drawable.placeholder_book)
+                    .into(binding.bookCover)
 
-            binding.bookFavorite.setOnClickListener {
-                val bookFavorite = FavoriteEntity(0, title, author, image)
-                favoriteViewModel.addFavorite(bookFavorite)
-                Toast.makeText(requireContext(), "Adicionado aos Favoritos", Toast.LENGTH_LONG).show()
+                binding.bookFavorite.setOnClickListener {
+                    val bookFavorite = FavoriteEntity(0, title, author, image)
+                    favoriteViewModel.addFavorite(bookFavorite)
+                    Toast.makeText(requireContext(), "Adicionado aos Favoritos", Toast.LENGTH_LONG).show()
+                }
             }
-
         })
 
         viewModel.errorMessage.observe(this, Observer { message ->
@@ -110,7 +112,11 @@ class BookFragment: Fragment(R.layout.fragment_book) {
         })
 
         similarViewModel.booksSimilar.observe(this, Observer { similars ->
-            adapter.setSimilarList(similars.similarBooks)
+
+            if (similars != null) {
+                adapter.setSimilarList(similars.similarBooks)
+            }
+
         })
 
         similarViewModel.errorMessage.observe(this, Observer { message ->
