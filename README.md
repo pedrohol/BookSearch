@@ -27,6 +27,6 @@ Aplicativo Android desenvolvido para aplicar estudos em persistência de dados l
 <li><strong>Arquitetura</strong>: MVVM (Model-View-ViewModel).</li>
 <li><strong>Consumo de API</strong>: Retrofit.</li>
 <li><strong>Banco de Dados</strong>: Room Persistence Library (abstração do SQLite).</li>
-<li><strong>Koin</strong>: Injeção de Dependência.</li>
+<li><strong>Injeção de Dependência</strong>: Koin.</li>
 <li><strong>UI</strong>: XML com componentes do Material Design.</li>
 <li><strong>Lifecycle</strong>: Activity, Fragments, ViewModel, LiveData.</li>
