@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,24 +14,17 @@ import com.bumptech.glide.Glide
 import com.example.livros.R
 import com.example.livros.adapters.BookSimilarAdapter
 import com.example.livros.databinding.FragmentBookBinding
-import com.example.livros.repository.BooksRepository
 import com.example.livros.repository.FavoritesRepository
-import com.example.livros.retrofit.BooksService
 import com.example.livros.room.FavoriteDatabase
 import com.example.livros.room.FavoriteEntity
 import com.example.livros.viewmodel.BooksInformationViewModel
 import com.example.livros.viewmodel.BooksSimilarViewModel
-import com.example.livros.viewmodel.Factory.BooksInformationViewModelFactory
-import com.example.livros.viewmodel.Factory.BooksSimilarFactory
-import com.example.livros.viewmodel.Factory.FavoritesViewModelFactory
 import com.example.livros.viewmodel.FavoritesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookFragment: Fragment(R.layout.fragment_book) {
 
     private lateinit var binding: FragmentBookBinding
-
-    //private val retrofitService = BooksService.getInstance()
 
     private val adapter = BookSimilarAdapter { bookSimilar ->
         val action = BookFragmentDirections.actionBookFragmentSelf(bookSimilar.id)
@@ -54,20 +46,6 @@ class BookFragment: Fragment(R.layout.fragment_book) {
         binding.bookRecyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 
         binding.bookRecyclerView.adapter = adapter
-
-//        viewModel = ViewModelProvider(this, BooksInformationViewModelFactory(BooksRepository(retrofitService))).get(
-//            BooksInformationViewModel::class.java
-//        )
-
-//        similarViewModel = ViewModelProvider(this, BooksSimilarFactory(BooksRepository(retrofitService))).get(
-//            BooksSimilarViewModel::class.java
-//        )
-
-        val database = FavoriteDatabase.getDataBase(requireContext())
-        val dao = database.favoriteDao()
-        val repository = FavoritesRepository(dao)
-
-//        favoriteViewModel = ViewModelProvider(this, FavoritesViewModelFactory(repository)).get(FavoritesViewModel::class.java)
 
         binding.backArrow.setNavigationOnClickListener {
             findNavController().popBackStack()
@@ -114,6 +92,7 @@ class BookFragment: Fragment(R.layout.fragment_book) {
         similarViewModel.booksSimilar.observe(this, Observer { similars ->
 
             if (similars != null) {
+                binding.bookSimilars.visibility = View.VISIBLE
                 adapter.setSimilarList(similars.similarBooks)
             }
 

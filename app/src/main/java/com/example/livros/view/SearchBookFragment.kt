@@ -7,23 +7,17 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.livros.R
 import com.example.livros.adapters.SearchBookAdapter
 import com.example.livros.databinding.FragmentSearchBooksBinding
 import androidx.navigation.findNavController
-import com.example.livros.repository.BooksRepository
-import com.example.livros.retrofit.BooksService
 import com.example.livros.viewmodel.SearchBookViewModel
-import com.example.livros.viewmodel.Factory.BooksViewModelFactory
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchBookFragment: Fragment(R.layout.fragment_search_books) {
 
     private lateinit var binding: FragmentSearchBooksBinding
-
-    //private val retrofitService = BooksService.getInstance()
 
     private val adapter = SearchBookAdapter { book ->
         val bookFragment = SearchBookFragmentDirections.actionMenuBooksToBookFragment(book.id)
